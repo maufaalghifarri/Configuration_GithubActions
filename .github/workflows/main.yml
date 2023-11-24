@@ -54,7 +54,7 @@ jobs:
       if: always()
       with:
         name: API Test Report
-        path: api-reports  # Update the path to the actual directory containing API test reports
+        path: build/test-results/apiTest  # Update the path to the actual directory containing API test reports
         
 
     #Deploy to Github Pages
