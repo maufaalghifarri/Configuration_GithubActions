@@ -1,13 +1,11 @@
 import io.restassured.RestAssured;
-import io.restassured.response.Response;
-import netscape.javascript.JSObject;
+
 import org.hamcrest.Matchers;
 import org.json.JSONObject;
-import org.junit.jupiter.api.BeforeAll;
+
 import org.junit.jupiter.api.Test;
 
-import static io.restassured.RestAssured.given;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class APITest {
     @Test

@@ -54,3 +54,22 @@ task cucumber() {
         }
     }
 }
+
+task apiTest(type: Test) {
+    description("Running API Test")
+    useJUnitPlatform()
+    include '**/APITest.class' // Adjust this based on your actual package and class name
+}
+
+// Configure the dependencies for the apiTest task
+apiTest.dependsOn assemble
+apiTest.dependsOn compileTestJava
+
+// Define a new task that depends on both cucumber and apiTest
+task allTests {
+    dependsOn cucumber
+    dependsOn apiTest
+}
+
+// Specify the default tasks to run when executing './gradlew'
+defaultTasks 'allTests'
