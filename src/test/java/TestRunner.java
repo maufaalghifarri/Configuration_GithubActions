@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         glue = {"stepdef"},
         features = {"src/test/resources"},
-        plugin = {"pretty"}
+        plugin = {"pretty", "html:reports/cucumber.html", "json:reports/cucumber.json"}
 //        tags = "@success-login"
 )
 public class TestRunner {
