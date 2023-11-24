@@ -55,21 +55,47 @@ task cucumber() {
     }
 }
 
+//task apiTest(type: Test) {
+//    description("Running API Test")
+//    useJUnitPlatform()
+//    include '**/APITest.class' // Adjust this based on your actual package and class name
+//}
+//
+//// Configure the dependencies for the apiTest task
+//apiTest.dependsOn assemble
+//apiTest.dependsOn compileTestJava
+//
+//// Define a new task that depends on both cucumber and apiTest
+//task allTests {
+//    dependsOn cucumber
+//    dependsOn apiTest
+//}
+//
+//// Specify the default tasks to run when executing './gradlew'
+//defaultTasks 'allTests'
+
 task apiTest(type: Test) {
     description("Running API Test")
     useJUnitPlatform()
-    include '**/APITest.class' // Adjust this based on your actual package and class name
+    include '**/APITest.class' // Sesuaikan ini berdasarkan paket dan nama kelas yang sebenarnya untuk pengujian API
+
+    // Konfigurasi laporan JUnit XML
+    reports {
+        junitXml {
+            destination = file("$buildDir/test-results/apiTest")
+        }
+    }
 }
 
-// Configure the dependencies for the apiTest task
+// Konfigurasi dependencies untuk tugas apiTest
 apiTest.dependsOn assemble
 apiTest.dependsOn compileTestJava
 
-// Define a new task that depends on both cucumber and apiTest
+// Tentukan tugas baru yang bergantung pada kedua cucumber dan apiTest
 task allTests {
     dependsOn cucumber
     dependsOn apiTest
 }
 
-// Specify the default tasks to run when executing './gradlew'
+// Spesifikasikan tugas default untuk dijalankan saat mengeksekusi './gradlew'
 defaultTasks 'allTests'
